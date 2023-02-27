@@ -50,7 +50,10 @@
         "lockFileMaintenance"
       ],
       "dependencyDashboardApproval": false,
-      "stabilityDays": 0
+      "stabilityDays": 0,
+      "groupName": "all",
+      "includeDependencies": true,
+      "packagePatterns": ["*"]
     }
   ]
 }
