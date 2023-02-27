@@ -12,7 +12,6 @@
   "rebaseWhen": "conflicted",
   "commitBodyTable": true,
   "branchName": "dependency-updates",
-  "branchTopic": "{{{replace 'helmrelease-' '' packageFile}}}",
   "flux": {
     "fileMatch": ["infra/.*"]
   },
@@ -53,21 +52,4 @@
       "stabilityDays": 0
     }
   ]
-  // "deps": [
-  //   {
-  //     "groupName": "helm-values"
-  //   },
-  //   {
-  //     "groupName": "github-actions"
-  //   },
-  //   {
-  //     "groupName": "flux"
-  //   },
-  //   {
-  //     "groupName": "kubernetes"
-  //   },
-  //   {
-  //     "groupName": "kustomize"
-  //   }
-  // ]
 }
