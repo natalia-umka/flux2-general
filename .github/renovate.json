@@ -12,6 +12,9 @@
   "rebaseWhen": "conflicted",
   "commitBodyTable": true,
   "branchName": "dependency-updates",
+  "commitMessagePrefix": "chore(deps): update",
+  "prTitlePrefix": "chore(deps): update",
+  "prBody": "This pull request contains updates for all packages affected by security vulnerabilities or outdated versions.",
   "flux": {
     "fileMatch": ["infra/.*"]
   },
