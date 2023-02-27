@@ -10,6 +10,7 @@
   "dependencyDashboardTitle": "Renovate Dashboard 🤖",
   "suppressNotifications": ["prIgnoreNotification"],
   "rebaseWhen": "conflicted",
+  "prHourlyLimit": 2,
   "commitBodyTable": true,
   "commitMessagePrefix": "chore(deps): update",
   "prBody": "This pull request contains updates for all packages affected by security vulnerabilities or outdated versions.",
