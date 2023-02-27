@@ -12,7 +12,6 @@
   "suppressNotifications": ["prIgnoreNotification"],
   "rebaseWhen": "conflicted",
   "commitBodyTable": true,
-  "prBody": "This pull request contains updates for all packages.",
   "flux": {
     "fileMatch": ["infra/.*"]
   },
