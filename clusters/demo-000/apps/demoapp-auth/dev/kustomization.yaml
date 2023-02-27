@@ -1,0 +1,71 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: demoapp-auth-dev
+resources:
+  - namespace.yaml
+  - ingress.yaml
+  - redis.yaml
+  - ../../../../../apps/demoapp-auth
+images:
+  - name: nginxinc/nginx-unprivileged
+    newTag: '1.23'
+configMapGenerator:
+  - name: demoapp-auth-movie
+    behavior: merge
+    literals:
+      - BASE_URL="https://dev.movie.demoapp-auth.example.com"
+      - FOOD_URL="http://demoapp-auth-food"
+      - SLEEP_URL="http://demoapp-auth-sleep"
+  - name: demoapp-auth-food
+    behavior: merge
+    literals:
+      - SLEEP_URL="http://demoapp-auth-sleep"
+  - name: demoapp-auth-sleep
+    behavior: merge
+    literals:
+      - TIMEOUT="480"
+patches:
+  # No need for autoscaling on dev
+  - patch: |-
+      $patch: delete
+      apiVersion: autoscaling/v1
+      kind: HorizontalPodAutoscaler
+      metadata:
+        name: any
+    target:
+      kind: HorizontalPodAutoscaler
+      labelSelector: group=demoapp-auth
+  # No need for resource restrictions on dev
+  - patch: |-
+      - op: replace
+        path: /spec/template/spec/containers/0/resources
+        value: {}
+    target:
+      kind: Deployment
+      labelSelector: group=demoapp-auth
+  # Add tolerations
+  - patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: any
+      spec:
+        template:
+          spec:
+            tolerations:
+            - key: dedicated
+              operator: Equal
+              value: dev
+    target:
+      kind: Deployment
+      labelSelector: group=demoapp-auth
+  # Add variable indicating environment
+  - patch: |-
+      - op: add
+        path: "/spec/template/spec/containers/0/env/-"
+        value:
+          name: ENVIRONMENT
+          value: dev
+    target:
+      kind: Deployment
+      labelSelector: group=demoapp-auth

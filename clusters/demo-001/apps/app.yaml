@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: demo001-app
+  name: demo001-app
+spec:
+  minReadySeconds: 30
+  selector:
+    matchLabels:
+      app: demo001-app
+  template:
+    metadata:
+      labels:
+        app: demo001-app
+    spec:
+      containers:
+      - name: demo001-app
+        image: nginxinc/nginx-unprivileged:1.23
+        env:
+        - name: APP_GROUP
+          value: demo001-app
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          privileged: false
+        volumeMounts:
+        - mountPath: /tmp
+          name: temp
+      securityContext:
+        fsGroup: 2000
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
+      volumes:
+      - name: temp
+        emptyDir: {}

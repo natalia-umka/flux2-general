@@ -1,0 +1,40 @@
+resources:
+- ../base
+
+nameSuffix: -movie
+
+commonLabels:
+  app: demoapp-auth-movie
+
+images:
+- name: demoapp-auth
+  newName: nginxinc/nginx-unprivileged
+
+configMapGenerator:
+- name: demoapp-auth
+  behavior: merge
+  literals:
+  - APP_NAME='demoapp-auth-movie'
+
+patches:
+- patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/name
+      value: demoapp-auth-movie
+  target:
+    kind: Deployment
+- patch: |-
+    - op: add
+      path: "/metadata/labels/period"
+      value: day
+  target:
+    kind: Deployment 
+- patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/resources
+      value:
+        requests:
+          cpu: 250m
+          memory: 512Mi
+  target:
+    kind: Deployment

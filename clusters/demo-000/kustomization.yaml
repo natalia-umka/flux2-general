@@ -1,0 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - kubernetes-api-ingress.yaml
+  - rbac
+  - flux-system
+  - infra/flux-ks.yaml
+  - apps/demoapp-auth/flux-ks.yaml
+  - apps/demoapp-data-processor/flux-ks.yaml
