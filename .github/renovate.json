@@ -40,7 +40,8 @@
     },
     {
       "groupName": "flux",
-      "packagePatterns": ["^.*flux.*$", "^.*local-path-provisioner.*$", "^.*k8s\\.gcr\\.io.*$"]
+      "packagePatterns": ["^.*flux.*$"],
+      "excludePackageNames": ["^.*tbe-entertainment.*$"]
     },
     {
       "groupName": "github-actions",
