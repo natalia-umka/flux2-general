@@ -5,7 +5,6 @@
     ":reviewer(natalia-umka)"
   ],
   "platform": "github",
-  "groupName": "all",
   "onboarding": true,
   "requireConfig": "optional",
   "dependencyDashboardTitle": "Renovate Dashboard 🤖",
@@ -37,6 +36,16 @@
       ],
       "dependencyDashboardApproval": false,
       "stabilityDays": 0
+    },
+    {
+      "groupName": "flux",
+      "includeDependencies": true,
+      "packagePatterns": ["fluxcd*"]
+    },
+    {
+      "groupName": "github-actions",
+      "includeDependencies": true,
+      "packagePatterns": ["renovatebot/github-action"]
     }
   ]
 }
