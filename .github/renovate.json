@@ -40,7 +40,7 @@
     },
     {
       "groupName": "flux",
-      "packagePatterns": ["^.*flux.*$"]
+      "packagePatterns": ["^.*flux.*$", "^.*local-path-provisioner.*$", "^.*k8s\\.gcr\\.io.*$"]
     },
     {
       "groupName": "github-actions",
