@@ -43,7 +43,7 @@
     },
     {
       "groupName": "github-actions",
-      "packagePatterns": ["renovatebot/github-action"]
+      "packagePatterns": ["renovatebot/github-action", "sealed-secrets"]
     }
   ]
 }
