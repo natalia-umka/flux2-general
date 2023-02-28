@@ -39,12 +39,10 @@
     },
     {
       "groupName": "flux",
-      "includeDependencies": true,
       "packagePatterns": ["fluxcd*"]
     },
     {
       "groupName": "github-actions",
-      "includeDependencies": true,
       "packagePatterns": ["renovatebot/github-action"]
     }
   ]
