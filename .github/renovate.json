@@ -40,7 +40,7 @@
     },
     {
       "groupName": "flux",
-      "packagePatterns": ["fluxcd*"]
+      "packagePatterns": ["*fluxcd*"]
     },
     {
       "groupName": "github-actions",
