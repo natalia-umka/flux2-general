@@ -41,7 +41,7 @@
     {
       "groupName": "flux",
       "packagePatterns": ["^.*flux.*$"],
-      "excludePackageNames": ["^.*tbe-entertainment.*$"]
+      "excludePackageNames": ["^.*some-name.*$"]
     },
     {
       "groupName": "github-actions",
